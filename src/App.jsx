@@ -49,8 +49,9 @@ function App() {
     setWeight(95);
     setBMI(0);
     setCategory(null);
-    setFlag(true);
+    setFlag(!resetFlag);
   };
+
   return (
     <>
       <div className="row m-0 p-0" style={{ height: "100vh" }}>
