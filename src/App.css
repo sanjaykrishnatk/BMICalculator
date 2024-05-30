@@ -1,0 +1,48 @@
+body {
+  background-color: black;
+}
+#mainWrapper {
+  width: 80%;
+  /* min-height: 75%; */
+  background-color: #1c1c1c;
+  display: inline-block;
+  border: 3px solid #bc1925;
+}
+h3 {
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+.bmi-text {
+  font-size: 13px;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+}
+.genderImg {
+  width: 80px;
+  height: 80px;
+}
+figure {
+  width: 50% !important;
+}
+.txt-shadow {
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+.dull img {
+  opacity: 0.4;
+}
+.css-11lomnm-MuiSlider-root {
+  width: 90% !important;
+}
+.btnWrapper {
+  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  #mainWrapper {
+    width: 90% !important;
+  }
+}
+.undefined-gauge,
+.grafana-gauge {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
