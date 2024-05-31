@@ -177,7 +177,7 @@ function App() {
                 )}
               </div>
               <div
-                className="row align-items-center justify-content-center w-100 m-0"
+                className="row w-100 m-0"
                 data-aos="fade-left"
                 data-aos-duration="1000"
               >
