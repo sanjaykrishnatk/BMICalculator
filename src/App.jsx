@@ -5,6 +5,7 @@ import femaleImg from "./assets/female.png";
 import Slider from "@mui/material/Slider";
 import Button from "@mui/material/Button";
 import GaugeComponent from "react-gauge-component";
+import TextField from "@mui/material/TextField";
 
 function App() {
   // const [selectedGender, setSelectedGender] = useState(null);
@@ -13,19 +14,35 @@ function App() {
   const [BMI, setBMI] = useState(0);
   const [category, setCategory] = useState(null);
   const [resetFlag, setFlag] = useState(false);
+  const [sliderValue, setValue] = useState(25);
+  const [sliderValue2, setValue2] = useState(95);
   const [initialCalculationDone, setInitialCalculationDone] = useState(false);
-
   function valuetext(value) {
     return `${value}°C`;
   }
-  const handleInput = (e) => {
+  const handleInput = (e, newValue) => {
+    // console.log(`new val :${newValue}`);
+    let name = e.target.name;
+    // let value = e.target.value;
+    // console.log(name, value);
+
+    if (name == "weightValue") {
+      setWeight(newValue);
+      setValue(newValue);
+    } else {
+      setHeight(newValue);
+      setValue2(newValue);
+    }
+  };
+  const handleInputChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
-    // console.log(name, value);
-    if (name == "weightValue") {
+    if (name == "weightInput") {
       setWeight(value);
+      setValue(value);
     } else {
       setHeight(value);
+      setValue2(value);
     }
   };
   const getBMI = () => {
@@ -58,6 +75,9 @@ function App() {
     setBMI(0);
     setCategory(null);
     setFlag(!resetFlag);
+    setValue(25);
+    setValue2(95);
+    setInitialCalculationDone(false);
   };
   // getBMI();
   return (
@@ -161,40 +181,72 @@ function App() {
                 data-aos="fade-left"
                 data-aos-duration="1000"
               >
-                <label className="text-light fw-bold txt-shadow mt-2">
-                  Weight (kg)
-                </label>
-                <Slider
-                  aria-label="Small steps"
-                  defaultValue={25}
-                  key={resetFlag ? "weightReset" : "weightSlider"}
-                  getAriaValueText={valuetext}
-                  step={0.1}
-                  marks
-                  min={0}
-                  max={150}
-                  valueLabelDisplay="auto"
-                  color="error"
-                  name="weightValue"
-                  onChange={(e) => handleInput(e)}
-                />
-                <label className="text-light fw-bold txt-shadow mt-3">
-                  Height (cm)
-                </label>
-                <Slider
-                  aria-label="Small steps"
-                  defaultValue={95}
-                  key={resetFlag ? "heightReset" : "heightSlider"}
-                  getAriaValueText={valuetext}
-                  step={1}
-                  marks
-                  min={50}
-                  max={300}
-                  valueLabelDisplay="auto"
-                  color="error"
-                  name="heightValue"
-                  onChange={(e) => handleInput(e)}
-                />
+                <div className="row d-flex align-items-center justify-content-between w-100 m-0">
+                  <label className="text-light fw-bold txt-shadow mt-2">
+                    Weight (kg)
+                  </label>
+                  <Slider
+                    aria-label="Small steps"
+                    defaultValue={25}
+                    key={resetFlag ? "weightReset" : "weightSlider"}
+                    value={sliderValue}
+                    getAriaValueText={valuetext}
+                    step={0.1}
+                    marks
+                    min={0}
+                    max={150}
+                    valueLabelDisplay="auto"
+                    color="error"
+                    name="weightValue"
+                    onChange={handleInput}
+                  />
+                  <TextField
+                    id="standard-search"
+                    type="number"
+                    variant="standard"
+                    color="error"
+                    InputProps={{
+                      style: { color: "white", fontWeight: "bold" },
+                    }}
+                    className="red-line"
+                    value={sliderValue}
+                    onChange={(e) => handleInputChange(e)}
+                    name="weightInput"
+                  />
+                </div>
+                <div className="row d-flex align-items-center justify-content-between w-100 m-0">
+                  <label className="text-light fw-bold txt-shadow mt-3">
+                    Height (cm)
+                  </label>
+                  <Slider
+                    aria-label="Small steps"
+                    defaultValue={95}
+                    key={resetFlag ? "heightReset" : "heightSlider"}
+                    value={sliderValue2}
+                    getAriaValueText={valuetext}
+                    step={1}
+                    marks
+                    min={50}
+                    max={300}
+                    valueLabelDisplay="auto"
+                    color="error"
+                    name="heightValue"
+                    onChange={handleInput}
+                  />
+                  <TextField
+                    id="standard-search"
+                    type="number"
+                    variant="standard"
+                    color="error"
+                    InputProps={{
+                      style: { color: "white", fontWeight: "bold" },
+                    }}
+                    className="red-line"
+                    value={sliderValue2}
+                    onChange={(e) => handleInputChange(e)}
+                    name="heightInput"
+                  />
+                </div>
               </div>
               <div
                 className="row mt-3 ps-4 pe-4 pt-2 d-flex justify-content-between align-items-center btnWrapper"

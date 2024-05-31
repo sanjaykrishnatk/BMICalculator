@@ -35,7 +35,19 @@ figure {
   opacity: 0.4;
 }
 .css-11lomnm-MuiSlider-root {
-  width: 90% !important;
+  width: 80% !important;
+}
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  width: 18% !important;
+  color: #bc1925 !important;
+  padding-bottom: 30px !important;
+  font-weight: bold !important;
+}
+.red-line .MuiInput-underline:before {
+  border-bottom: 3px solid #d32f2f !important;
+}
+.red-line .MuiInput-underline:after {
+  border-bottom: 3px solid #d32f2f !important;
 }
 .btnWrapper {
   margin-bottom: 40px;
