@@ -34,7 +34,8 @@ figure {
 .dull img {
   opacity: 0.4;
 }
-.css-11lomnm-MuiSlider-root {
+.css-11lomnm-MuiSlider-root,
+.css-rtvu4j {
   width: 80% !important;
 }
 .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
@@ -42,6 +43,9 @@ figure {
   color: #bc1925 !important;
   padding-bottom: 30px !important;
   font-weight: bold !important;
+}
+.css-i44wyl {
+  width: 18% !important;
 }
 .red-line .MuiInput-underline:before {
   border-bottom: 3px solid #d32f2f !important;
