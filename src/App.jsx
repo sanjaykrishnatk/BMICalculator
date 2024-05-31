@@ -8,11 +8,12 @@ import GaugeComponent from "react-gauge-component";
 
 function App() {
   // const [selectedGender, setSelectedGender] = useState(null);
-  const [weight, setWeight] = useState(25);
-  const [height, setHeight] = useState(95);
+  const [weight, setWeight] = useState(0);
+  const [height, setHeight] = useState(0);
   const [BMI, setBMI] = useState(0);
   const [category, setCategory] = useState(null);
   const [resetFlag, setFlag] = useState(false);
+  const [initialCalculationDone, setInitialCalculationDone] = useState(false);
 
   function valuetext(value) {
     return `${value}°C`;
@@ -29,29 +30,36 @@ function App() {
   };
   const getBMI = () => {
     let BMIValue = (weight / (height / 100) ** 2).toFixed(1);
-    setBMI(BMIValue);
+    isNaN(BMIValue) ? setBMI(0) : setBMI(BMIValue);
+    // setBMI(BMIValue);
     if (BMIValue < 18.5) {
       setCategory("Underweight");
     } else if (BMIValue >= 18.5 && BMIValue <= 24.9) {
       setCategory("Normal Weight");
     } else if (BMIValue > 24.9 && BMIValue <= 29.9) {
       setCategory("Overweight");
-    } else {
+    } else if (BMIValue > 29.9) {
       setCategory("Obese");
+    } else {
+      setCategory("");
     }
   };
+  if (!initialCalculationDone) {
+    getBMI();
+    setInitialCalculationDone(true);
+  }
   // const handleImageClick = (gender) => {
   //   setSelectedGender(gender);
   //   alert(`${weight},${height}`);
   // };
   const handleReset = () => {
-    setHeight(25);
-    setWeight(95);
+    setHeight(0);
+    setWeight(0);
     setBMI(0);
     setCategory(null);
     setFlag(!resetFlag);
   };
-
+  // getBMI();
   return (
     <>
       <div className="row m-0 p-0" style={{ height: "100vh" }}>
