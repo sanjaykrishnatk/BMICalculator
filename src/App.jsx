@@ -64,6 +64,8 @@ function App() {
   if (!initialCalculationDone) {
     getBMI();
     setInitialCalculationDone(true);
+    setWeight(25);
+    setHeight(95);
   }
   // const handleImageClick = (gender) => {
   //   setSelectedGender(gender);
